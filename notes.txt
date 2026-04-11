@@ -1,0 +1,137 @@
+feedback from user
+android
+user unique id via device registration--small auth--based on device id
+id should be hex/oct
+
+
+authorization key
+
+id should be encoded
+
+scalable
+-----
+photo upload/pdf/doc/
+multiple
+timestamp
+source
+----
+
+define master bill
+vendor table--
+name
+modebile no
+age
+add
+bill.no
+
+gst no.
+branchno
+
+date and time of bill gerenration
+cash , card, detailes of it
+
+points added
+
+type of shop
+
+discount
+
+item name
+item code
+cgst 
+sgst
+
+discount
+
+---things gonna vary
+sku/item
+
+
+
+-------------------------------------------------------------------------
+
+month
+day
+year
+
+store
+item
+brand
+
+location
+-------------------------------------------------------------------------
+DOC STORAGE
+MEDICAL bill
+prescription
+warrenty
+bill
+
+------------------------
+USER ASK
+
+--priorities features
+--remind about grociers etc etc
+--vary of prices over time
+--distance of store
+--suggestion where to buy a cheaper item from (if we have master list)
+
+-------------------------------------------------------------------------------------
+
+test api independently
+
+if api gets complex --
+add test cases for every api--all combinations of api--test cases  
+
+
+-------------------------------------------
+
+time zone pov
+currency 
+
+-------------------------------------------------
+23rd march 26
+error handling
+log the error in db
+-------------------------------------------------
+
+
+
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://postgres:postgreSQL@localhost/billdb",
+)
+
+
+---------------------------------------------------
+analytics.py
+line 98
+
+@router.post("/train-categories")
+def train_categories() -> Dict[str, Any]:
+    """
+    Train / retrain the ML-based category classifier
+    from existing labelled bill items.
+    """
+    db = SessionLocal()
+    try:
+        n_samples = train_category_model(db)
+        if n_samples == 0:
+            return {
+                "message": "Not enough data or scikit-learn not installed. Using keyword-based categories.",
+                "samples_used": 0,
+            }
+
+        return {
+            "message": "Category model trained successfully.",
+            "samples_used": n_samples,
+        }
+    finally:
+        db.close()
+
+
+
+-----------------------------------------------------------------
+
+uvicorn main:app --host 0.0.0.0 --port 8000
+--------------------------------------------------------------------
+

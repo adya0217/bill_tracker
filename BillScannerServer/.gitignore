@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.sqlite
+*.sqlite-journal
+*.db
+
+# Virtual Environment
+venv/
+.env
+.env.*
+!.env.example
+
+# Uploads (user files)
+uploads/
+
+# Logs
+*.log
+*.pid
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temp
+*.tmp
+*.bak
+*.swp
+
+# Testing / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+*.pkl
